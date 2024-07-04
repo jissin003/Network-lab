@@ -36,6 +36,7 @@ int main(int argc, char **argv) {
     ret = connect(sockfd, (struct sockaddr *)&addr, sizeof(addr));
     if (ret < 0) {
         perror("Error connecting to the server");
+        close(sockfd); // Close the socket if connection fails
         exit(EXIT_FAILURE);
     }
     printf("Connected to the server...\n");
